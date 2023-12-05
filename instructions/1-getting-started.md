@@ -63,8 +63,8 @@ TYPEORM_MIGRATIONS=./src/migrations/*.ts
 TYPEORM_HOST=localhost
 TYPEORM_PORT=5532
 TYPEORM_USERNAME=postgres
-TYPEORM_PASSWORD=password
-TYPEORM_DATABASE=glee
+TYPEORM_PASSWORD=postgres
+TYPEORM_DATABASE=postgres
 ```
 
 You can use your own Postgres server if you wish or you can use the Docker-Compose template we provided in the `./utils` folder.
