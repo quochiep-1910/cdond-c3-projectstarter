@@ -219,10 +219,17 @@ jobs:
   configure-infrastructure:
     docker:
       # Docker image here that supports Ansible
+      - image: python:3.7-alpine3.16
     steps:
       # Checkout code from git
+      - checkout
       # Add ssh keys with fingerprint
+      - add_ssh_keys:
+        fingerprints:
+          - "c7:f3:74:a5:53:fa:d0:d1:80:cb:2a:2e:71:34:96:7c"
       # attach workspace
+      - attach_workspace:
+          at: ~/
       - run:
           name: Install dependencies
           command: |
