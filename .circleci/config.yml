@@ -21,9 +21,9 @@ commands:
             # Your code here
             aws s3 rm s3://udacity-<<parameters.workflow_id>> --recursive
             aws cloudformation delete-stack \
-                                --stack-name udacity-BE-<<parameters.workflow_id>>
+                                --stack-name udapeople-backend-<<parameters.workflow_id>>
             aws cloudformation delete-stack \
-                               --stack-name udacity-FE-<<parameters.workflow_id>>
+                               --stack-name udapeople-frontend-<<parameters.workflow_id>>
 
   revert-migrations:
     description: Revert the last migration if successfully run in the current workflow.
@@ -187,7 +187,7 @@ jobs:
           command: |
             aws cloudformation deploy \
               --template-file .circleci/files/backend.yml \
-              --stack-name "udacity-BE-${CIRCLE_WORKFLOW_ID:0:7}" \
+              --stack-name "udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7}" \
               --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"  
               --tags project=UDACITY \
               
@@ -196,7 +196,7 @@ jobs:
           command: |
             aws cloudformation deploy \
               --template-file .circleci/files/frontend.yml \
-              --stack-name "udacity-FE-${CIRCLE_WORKFLOW_ID:0:7}" \
+              --stack-name "udapeople-frontend-${CIRCLE_WORKFLOW_ID:0:7}" \
               --parameter-overrides ID="${CIRCLE_WORKFLOW_ID:0:7}"  
               --tags project=UDACITY 
               
@@ -208,7 +208,7 @@ jobs:
             # cat inventory.txt
             # aws ec2 describe-instances \
             --query 'Reservation[*].Instances[*].PublicIpAddess' \
-            --filters Name=tag:aws:cloudformation:stack-name,Values=udacity-BE-${CIRCLE_WORKFLOW_ID:0:7} \
+            --filters Name=tag:aws:cloudformation:stack-name,Values=udapeople-backend-${CIRCLE_WORKFLOW_ID:0:7} \
             --output text) >> ~/project/.circleci/ansible/inventory.txt
             cat .circleci/ansible/inventory.txt
             #  export BACKEND_IP=$(aws ec2 describe-instances \
