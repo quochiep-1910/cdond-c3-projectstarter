@@ -70,7 +70,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-build-cache]
+          keys: [frontend-build]
       - run:
           name: Build frontend
           command: |
@@ -79,7 +79,7 @@ jobs:
             npm run build
       - save_cache:
           paths: [frontend/node_modules]
-          key: frontend-build-cache
+          key: frontend-build
       - slack/notify:
           branch_pattern: .+
           event: fail
@@ -93,7 +93,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-build-cache]
+          keys: [backend-build]
       - run:
           name: Backend build
           command: |
@@ -102,7 +102,7 @@ jobs:
             npm run build
       - save_cache:
           paths: [backend/node_modules]
-          key: backend-build-cache
+          key: backend-build
       - slack/notify:
           branch_pattern: .+
           event: fail
@@ -116,7 +116,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-build-cache]
+          keys: [frontend-build]
       - run:
           name: Test frontend
           command: |
@@ -136,7 +136,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-build-cache]
+          keys: [backend-build]
       - run:
           name: Test backend
           command: |
@@ -155,7 +155,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [frontend-build-cache]
+          keys: [frontend-build]
       - run:
           name: Scan frontend
           command: |
@@ -174,7 +174,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-build-cache]
+          keys: [backend-build]
       - run:
           name: Scan backend
           command: |
@@ -271,7 +271,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          keys: [backend-build-cache]
+          keys: [backend-build]
       - attach_workspace:
           at: .
       - create-dotenv-file
@@ -351,7 +351,7 @@ jobs:
       - attach_workspace:
           at: .
       - restore_cache:
-          keys: [backend-build-cache]
+          keys: [backend-build]
       - run:
           name: Install dependencies
           command: |
