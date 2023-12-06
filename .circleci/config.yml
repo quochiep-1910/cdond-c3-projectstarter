@@ -41,7 +41,7 @@ commands:
           when: on_fail
           command: |
             # Curl command here to see if there was a successful migration associated with the workflow id, store result in SUCCESS variable
-            SUCCESS=$(curl --insecure https://kvdb.io/RjwtUntH7hgxoNKKa9WZED/migration_${CIRCLE_WORKFLOW_ID:0:7})
+            SUCCESS=$(curl --insecure https://kvdb.io/Fd55uogXyxYdnXJvnyN8Xo/migration_${CIRCLE_WORKFLOW_ID:0:7})
             echo $SUCCESS
             if [[ "${SUCCESS}" == "1" ]]
             then
@@ -288,7 +288,7 @@ jobs:
             # Your code here
             if grep -q "has been executed successfully." ~/project/backend/migrations_dump.txt
             then
-              curl --insecure https://kvdb.io/RjwtUntH7hgxoNKKa9WZED/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
+              curl --insecure https://kvdb.io/Fd55uogXyxYdnXJvnyN8Xo/migration_${CIRCLE_WORKFLOW_ID:0:7}  -d '1'
             fi
      # Here's where you will add some code to rollback on failure      
       - destroy-environment:
@@ -350,7 +350,7 @@ jobs:
       # Add ssh keys with fingerprint
       - add_ssh_keys:
           fingerprints:
-            - '5d:67:e3:85:c2:b2:46:0f:dd:7f:6a:4b:06:66:8f:d0'
+            - 'c7:f3:74:a5:53:fa:d0:d1:80:cb:2a:2e:71:34:96:7c'
       - attach_workspace:
           at: ~/
       - run:
@@ -488,7 +488,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - '5d:67:e3:85:c2:b2:46:0f:dd:7f:6a:4b:06:66:8f:d0'
+            - 'c7:f3:74:a5:53:fa:d0:d1:80:cb:2a:2e:71:34:96:7c'
       - run:
           name: Install dependencies
           command: |
