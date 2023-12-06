@@ -7,7 +7,7 @@ declare const module: any;
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config: ConfigService = app.get('ConfigService');
-  await app.listen(config.PORT);
+  await app.listen(3030);
 
   if (module.hot) {
     module.hot.accept();

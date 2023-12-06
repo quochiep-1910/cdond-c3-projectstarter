@@ -60,11 +60,11 @@ TYPEORM_ENTITIES=./src/modules/domain/**/*.entity.ts
 TYPEORM_MIGRATIONS=./src/migrations/*.ts
 
 # Things you can change if you wish...
-TYPEORM_HOST=database-2.ccpl3dfktbuk.us-east-1.rds.amazonaws.com
-TYPEORM_PORT=5432
+TYPEORM_HOST=localhost
+TYPEORM_PORT=5532
 TYPEORM_USERNAME=postgres
-TYPEORM_PASSWORD=postgres
-TYPEORM_DATABASE=postgres
+TYPEORM_PASSWORD=password
+TYPEORM_DATABASE=glee
 ```
 
 You can use your own Postgres server if you wish or you can use the Docker-Compose template we provided in the `./utils` folder.
