@@ -28,7 +28,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .addTag('customTag')
     .setBasePath(apiVersionPrefix)
-    .addBearerAuth()
+    .addBearerAuth() // here was an intentional compile error. Removed the "x" and the backend compiles.
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup(`api/${apiVersionPrefix}`, app, document);
@@ -47,7 +47,7 @@ async function bootstrap() {
   };
   app.use(cors(corsOptions));
   app.useGlobalFilters(new ErrorFilter());
-  await app.listen(3030);
+  await app.listen(config.PORT);
   logger.log(`Listening on port ${config.PORT}.`);
 }
 
